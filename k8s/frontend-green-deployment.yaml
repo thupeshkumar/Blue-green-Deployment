@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+      version: green
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: green
+    spec:
+      containers:
+        - name: frontend-green
+          image: thupesh/frontend-green:v1
+          ports:
+            - containerPort: 3200

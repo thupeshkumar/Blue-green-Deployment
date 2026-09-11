@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: blue
+    spec:
+      containers:
+        - name: frontend-blue
+          image: thupesh/frontend-blue:v1
+          ports:
+            - containerPort: 3100

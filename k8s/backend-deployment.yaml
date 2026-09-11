@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: thupesh/backend:v1
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          env:
+            - name: PORT
+              value: "5000"
+            - name: MONGO_URI
+              value: mongodb+srv://sivamcomz_db_user:D998aHdqWnvpm1tu@studentdb.tetcnkr.mongodb.net/?appName=StudentDB

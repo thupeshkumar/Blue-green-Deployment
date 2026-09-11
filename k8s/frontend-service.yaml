@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  type: ClusterIP
+  selector:
+    app: frontend
+    version: blue   # switch to green when needed
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3100

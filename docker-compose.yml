@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://sivamcomz_db_user:D998aHdqWnvpm1tu@studentdb.tetcnkr.mongodb.net/?appName=StudentDB
+    depends_on:
+      - mongo
+
+  frontend-blue:
+    build: ./frontend-blue
+    ports:
+      - "3100:3100"
+
+  frontend-green:
+    build: ./frontend-green
+    ports:
+      - "3200:3200"
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
